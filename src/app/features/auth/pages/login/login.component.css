@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.form-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.input-error {
+  border-color: #dc2626;
+}
+
+.btn-primary {
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

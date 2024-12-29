@@ -1,0 +1,110 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Banking App Registration</h2>
+
+    <div *ngIf="error" class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+      {{ error }}
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          [class.border-red-500]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+        >
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="mt-1 text-sm text-red-500">
+          Name must be between 8 and 30 characters long
+        </div>
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          [class.border-red-500]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+        >
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="mt-1 text-sm text-red-500">
+          Please enter a valid email address
+        </div>
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          [class.border-red-500]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+        >
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="mt-1 text-sm text-red-500">
+          Password must be between 8 and 30 characters long
+        </div>
+      </div>
+
+      <div>
+        <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+        <input
+          type="number"
+          id="age"
+          formControlName="age"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          [class.border-red-500]="registerForm.get('age')?.invalid && registerForm.get('age')?.touched"
+        >
+        <div *ngIf="registerForm.get('age')?.invalid && registerForm.get('age')?.touched" class="mt-1 text-sm text-red-500">
+          Age must be between 18 and 80
+        </div>
+      </div>
+
+      <div>
+        <label for="monthlyIncome" class="block text-sm font-medium text-gray-700">Monthly Income</label>
+        <input
+          type="number"
+          id="monthlyIncome"
+          formControlName="monthlyIncome"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          [class.border-red-500]="registerForm.get('monthlyIncome')?.invalid && registerForm.get('monthlyIncome')?.touched"
+        >
+        <div *ngIf="registerForm.get('monthlyIncome')?.invalid && registerForm.get('monthlyIncome')?.touched" class="mt-1 text-sm text-red-500">
+          Monthly Income must be a positive number
+        </div>
+      </div>
+
+      <div>
+        <label for="creditScore" class="block text-sm font-medium text-gray-700">Credit Score</label>
+        <input
+          type="number"
+          id="creditScore"
+          formControlName="creditScore"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          [class.border-red-500]="registerForm.get('creditScore')?.invalid && registerForm.get('creditScore')?.touched"
+        >
+        <div *ngIf="registerForm.get('creditScore')?.invalid && registerForm.get('creditScore')?.touched" class="mt-1 text-sm text-red-500">
+          Credit Score must be a positive number
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid || isLoading"
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300"
+      >
+        <span *ngIf="isLoading">Loading...</span>
+        <span *ngIf="!isLoading">Register</span>
+      </button>
+    </form>
+
+    <div class="mt-4 text-center">
+      <a routerLink="/auth/login" class="text-sm text-blue-600 hover:text-blue-500">
+        Already have an account? Sign in
+      </a>
+    </div>
+  </div>
+</div>
