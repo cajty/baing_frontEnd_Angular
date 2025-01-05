@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,9 +14,9 @@ import { TokenService } from '../../../../core/services/token.service';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterLink
   ],
   providers: [
-    AuthService,
     TokenService,
   ],
   templateUrl: './register.component.html',
@@ -39,7 +39,7 @@ export class RegisterComponent {
       age: [null, [Validators.required, Validators.min(18), Validators.max(80)]],
       monthlyIncome: [0, [Validators.min(0)]],
       creditScore: [0, [Validators.min(0)]],
-      role: ['USER']
+      role: ['USER', [Validators.required]]
     });
   }
 
@@ -51,8 +51,9 @@ export class RegisterComponent {
 
     this.authService.register(this.registerForm.value).subscribe({
       next: (response) => {
+
         this.isLoading = false;
-        this.router.navigate(['/login']);
+        this.router.navigate(['auth/login']);
       },
       error: (error) => {
         this.isLoading = false;

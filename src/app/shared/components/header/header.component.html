@@ -1,1 +1,23 @@
+<nav class="header-nav">
+  <ul class="nav-list">
+    @if (!isLoggedIn()) {
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/auth/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/auth/register">Register</a>
+      </li>
+    }
 
+    @if (isLoggedIn()) {
+      <li class="nav-item">
+        <span class="welcome-text">Welcome, {{ currentUser()?.name }}</span>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link logout-button" (click)="logout()">
+          Logout
+        </button>
+      </li>
+    }
+  </ul>
+</nav>
