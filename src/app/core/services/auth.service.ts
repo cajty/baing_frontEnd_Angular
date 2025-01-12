@@ -4,10 +4,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Role } from '../models/role.enum';
-import { LoginRequest, LoginResponse, RegisterResponse, User } from '../models/user.interface';
+import {LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, User} from '../models/user.interface';
 import { TokenService } from './token.service';
 import { Router } from '@angular/router';
-import { RegisterRequest } from "./user.service";
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,8 @@ export class AuthService {
   private readonly tokenService = inject(TokenService);
   private readonly router = inject(Router);
 
-  private readonly API_URL = "http://localhost:8082";
+
+  private API_URL = `${environment.apiUrl}`;
   private readonly currentUserSubject = new BehaviorSubject<User | null>(null);
   private role = new BehaviorSubject<Role | null>(null);
 

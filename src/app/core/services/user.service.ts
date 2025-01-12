@@ -3,26 +3,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {environment} from "../../../environments/environment";
-import {User} from "../models/user.interface";
+import {User, UserRequest,} from "../models/user.interface";
 
 
-export interface RegisterRequest {
-  name: string;
-  email: string;
-  password: string;
-  age: number;
-  monthlyIncome: number;
-  creditScore: number;
-  role: string;
-}
 
-export interface UserRequest {
-  name: string;
-  age: number;
-  monthlyIncome: number;
-  creditScore: number;
-  role: string;
-}
 
 @Injectable({
   providedIn: 'root'

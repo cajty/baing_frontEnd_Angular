@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { UserService, UserRequest } from '../../../../core/services/user.service';
-import { User } from '../../../../core/models/user.interface';
+import { UserService } from '../../../../core/services/user.service';
+import {User, UserRequest} from '../../../../core/models/user.interface';
 
 @Component({
   selector: 'app-dashboard',

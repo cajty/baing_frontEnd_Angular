@@ -17,7 +17,7 @@ import {environment} from "../../../../../environments/environment";
     RouterLink
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  // styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnDestroy {
   private readonly authService = inject(AuthService);

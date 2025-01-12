@@ -14,10 +14,11 @@ export interface User {
   creditScore: number;
   monthlyIncome: number;
   role: string;
-  accountIds: number[];
-  invoiceIds: number[];
-  loanIds: number[];
+
 }
+
+
+
 
 export interface LoginResponse {
   expiresIn: number;
@@ -25,3 +26,26 @@ export interface LoginResponse {
   role: string;
   user: User;
 }
+
+
+export interface RegisterRequest {
+  name: string;
+  email: string;
+  password: string;
+  age: number;
+  monthlyIncome: number;
+  creditScore: number;
+  role: string;
+}
+
+export interface UserRequest {
+  name: string;
+  age: number;
+  monthlyIncome: number;
+  creditScore: number;
+  role: string;
+}
+
+
+
+
